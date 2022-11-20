@@ -3,14 +3,15 @@ DROP SCHEMA IF EXISTS `quiz`;
 CREATE SCHEMA `quiz`;
 
 CREATE TABLE `quiz`.`user` (
-  `user_id` int PRIMARY KEY AUTO_INCREMENT,
-  `first_name` varchar(30),
-  `last_name` varchar(30),
-  `username` varchar(30),
-  `email` varchar(255),
-  `password` varchar(30),
-  `isAdmin` tinyint,
-  `isActive` tinyint
+  `user_id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `address` varchar(255),
+  `phone` varchar(30),
+  `isAdmin` tinyint NOT NULL DEFAULT 0,
+  `isActive` tinyint NOT NULL DEFAULT 1
 );
 
 CREATE TABLE `quiz`.`submission` (
@@ -72,7 +73,7 @@ ALTER TABLE `quiz`.`option` ADD FOREIGN KEY (`question_id`) REFERENCES `quiz`.`q
 ALTER TABLE `quiz`.`feedback` ADD FOREIGN KEY (`quiz_type_id`) REFERENCES `quiz`.`quizType` (`quiz_type_id`);
 
 # Create default admin user
-INSERT INTO `quiz`.`user` (`first_name`, `last_name`, `username`, `email`, `password`, `isAdmin`, `isActive`) VALUES ('Inupedia', 'Zhang', 'admin', 'admin@inupedia.com', 'password', 1, 1);
+INSERT INTO `quiz`.`user` (`first_name`, `last_name`, `email`, `password`, `isAdmin`, `isActive`) VALUES ('Inupedia', 'Zhang', 'admin@inupedia.com', 'password', 1, 1);
 
 # Create some quiz types
 INSERT INTO `quiz`.`quizType` (`type_name`, `time_limit`, `description`) VALUES ('Java', 60, 'Java quiz');
@@ -409,6 +410,16 @@ INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('AccessRule',
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('GrantedAuthority', 60);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('SecurityChain', 60);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('PermissionMatrix', 60);
+
+
+# randomly select 10 questions from the database where the quiz_type_id is 3
+SELECT * FROM `quiz`.`question` WHERE `quiz_type_id` = 3 ORDER BY RAND() LIMIT 10;
+
+# select all options for the question with id 1
+SELECT * FROM `quiz`.`option` WHERE `question_id` = 1;
+
+
+
 
 
 
