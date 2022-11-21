@@ -18,19 +18,18 @@ public class LoginFilter extends OncePerRequestFilter {
         System.out.println("In LoginFilter");
 
         HttpSession session = request.getSession(false);
+        String loginURI = request.getContextPath() + "/login";
+        String registerURI = request.getContextPath() + "/register";
+        boolean loggedIn = session != null && session.getAttribute("user") != null;
+        boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean registerRequest = request.getRequestURI().equals(registerURI);
 
-        if (session != null && session.getAttribute("user") != null) {
+        if (loggedIn || loginRequest || registerRequest) {
             filterChain.doFilter(request, response);
         } else {
-            // redirect back to the login page if user is not logged in
-            response.sendRedirect("/login");
+            response.sendRedirect(loginURI);
         }
 
     }
 
-    @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        String path = request.getRequestURI();
-        return "/login".equals(path);
-    }
 }
