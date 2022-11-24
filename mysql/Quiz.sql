@@ -17,8 +17,8 @@ CREATE TABLE `quiz`.`user` (
 CREATE TABLE `quiz`.`submission` (
   `submission_id` int PRIMARY KEY AUTO_INCREMENT,
   `score` int,
-  `start_time` datetime,
-  `end_time` datetime,
+  `start_time` timestamp,
+  `end_time` timestamp,
   `user_id` int,
   `quiz_type_id` int
 );
@@ -71,9 +71,6 @@ ALTER TABLE `quiz`.`question` ADD FOREIGN KEY (`quiz_type_id`) REFERENCES `quiz`
 ALTER TABLE `quiz`.`option` ADD FOREIGN KEY (`question_id`) REFERENCES `quiz`.`question` (`question_id`);
 
 ALTER TABLE `quiz`.`feedback` ADD FOREIGN KEY (`quiz_type_id`) REFERENCES `quiz`.`quizType` (`quiz_type_id`);
-
-# Create default admin user
-INSERT INTO `quiz`.`user` (`first_name`, `last_name`, `email`, `password`, `isAdmin`, `isActive`) VALUES ('Inupedia', 'Zhang', 'admin@inupedia.com', 'password', 1, 1);
 
 # Create some quiz types
 INSERT INTO `quiz`.`quizType` (`type_name`, `time_limit`, `description`) VALUES ('Java', 60, 'Java quiz');
@@ -411,12 +408,11 @@ INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('GrantedAutho
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('SecurityChain', 60);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('PermissionMatrix', 60);
 
+# Create default admin user
+INSERT INTO `quiz`.`user` (`first_name`, `last_name`, `email`, `password`, `isAdmin`, `isActive`) VALUES ('Inupedia', 'Zhang', 'admin@inupedia.com', 'password', 1, 1);
 
-# randomly select 10 questions from the database where the quiz_type_id is 3
-SELECT * FROM `quiz`.`question` WHERE `quiz_type_id` = 3 ORDER BY RAND() LIMIT 10;
-
-# select all options for the question with id 1
-SELECT * FROM `quiz`.`option` WHERE `question_id` = 1;
+# Check admin user
+SELECT * FROM `quiz`.`user` WHERE isAdmin = 1;
 
 
 

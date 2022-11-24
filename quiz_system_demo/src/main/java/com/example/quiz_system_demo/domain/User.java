@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @Builder
 public class User {
+    private int userId;
     private String firstName;
     private String lastName;
     private String email;

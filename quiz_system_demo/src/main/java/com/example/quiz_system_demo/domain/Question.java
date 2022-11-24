@@ -13,5 +13,6 @@ public class Question {
     private String questionType;
     private String description;
     private String correctAnswer;
-    private String quizTypeId;
+    private int quizTypeId;
+
 }

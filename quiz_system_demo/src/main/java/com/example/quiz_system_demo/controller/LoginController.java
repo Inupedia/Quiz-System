@@ -2,6 +2,7 @@ package com.example.quiz_system_demo.controller;
 
 import com.example.quiz_system_demo.domain.User;
 import com.example.quiz_system_demo.service.UserService;
+import com.example.quiz_system_demo.utils.UserUtilSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,7 @@ public class LoginController {
             }
             HttpSession newSession = request.getSession(true);
             newSession.setAttribute("user", user.getFirstName());
+            UserUtilSingleton.getInstance().getUserUtil().setCurrentUserId(user.getUserId());
             return "redirect:/home";
         }
         return "redirect:/login";

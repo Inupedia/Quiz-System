@@ -12,6 +12,9 @@
         <a class="navbar-brand" href="/feedback">
             Feedback
         </a>
+        <a class="navbar-brand" href="/logout">
+            Logout
+        </a>
         <a class="navbar-brand" href="/contact">
             Contact Us
         </a>

@@ -2,14 +2,16 @@ package com.example.quiz_system_demo.domain;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Builder
-public class Option {
-    private int id;
-    private String optionDescription;
-    private int questionId;
+public class CurrentQuiz {
+    private int index;
+    private Question question;
+    private List<Option> options;
 }

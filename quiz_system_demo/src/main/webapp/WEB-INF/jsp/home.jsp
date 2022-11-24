@@ -10,6 +10,6 @@
 <body>
     <div id="root">
         <c:import url="nav.jsp" />
-        <c:import url="quiz.jsp" />
+        <c:import url="quizType.jsp" />
     </div>
 </body>

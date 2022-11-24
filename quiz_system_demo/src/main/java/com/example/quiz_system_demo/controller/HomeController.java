@@ -1,36 +1,45 @@
 package com.example.quiz_system_demo.controller;
 
-import com.example.quiz_system_demo.domain.Data;
-import com.example.quiz_system_demo.domain.Option;
-import com.example.quiz_system_demo.domain.Question;
+import com.example.quiz_system_demo.service.QuizTypeService;
+import com.example.quiz_system_demo.utils.UserUtilSingleton;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
+
 
 @Controller
 public class HomeController {
 
-    @GetMapping("/home")
-    public String getHome(Model model) {
-        List<Data> data = new ArrayList<>();
-        data.add(Data.builder()
-                .question(new Question(1, "Multiple Choice", "What is the capital of India?", "New Delhi", "1"))
-                .answers(new ArrayList<Option>() {{
-                    add(new Option(1, "New Delhi", "1"));
-                    add(new Option(2, "Mumbai", "1"));
-                    add(new Option(3, "Kolkata", "1"));
-                    add(new Option(4, "Chennai", "1"));
-                }})
-                .build());
-        model.addAttribute("data", data);
+    private final QuizTypeService quizTypeService;
+
+    @Autowired
+    public HomeController(QuizTypeService quizTypeService) {
+        this.quizTypeService = quizTypeService;
+    }
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String getAllQuizTypes(Model model) {
+        model.addAttribute("quizTypeList", quizTypeService.getAllQuizTypes());
         return "home";
+    }
+
+    @RequestMapping(value = "/feedback", method = RequestMethod.GET)
+    public String getFeedback() {
+        return "feedback";
+    }
+
+    @RequestMapping(value = "/feedback", method = RequestMethod.POST)
+    @ResponseBody
+    public HashMap<String, String> getResult(HttpServletRequest request) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("rating", request.getParameter("rating"));
+        map.put("feedback", request.getParameter("feedback"));
+        return map;
     }
 
 }
