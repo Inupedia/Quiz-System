@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -29,17 +30,19 @@ public class LoginController {
 
     @PostMapping("/login")
     public String postLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
-        User user = userService.getUsernameByEmail(email);
-        if (user != null && userService.validateLogin(email, password)) {
-            System.out.println("Login successful");
-            HttpSession oldSession = request.getSession(false);
-            if (oldSession != null) {
-                oldSession.invalidate();
+        Optional<User> user = userService.getUserByEmail(email);
+        if (user.isPresent()) {
+            if (userService.validateLogin(email, password)){
+                System.out.println("Login successful");
+                HttpSession oldSession = request.getSession(false);
+                if (oldSession != null) {
+                    oldSession.invalidate();
+                }
+                HttpSession newSession = request.getSession(true);
+                newSession.setAttribute("user", user.get().getFirstName());
+                UserUtilSingleton.getInstance().getUserUtil().setCurrentUserId(user.get().getUserId());
+                return "redirect:/home";
             }
-            HttpSession newSession = request.getSession(true);
-            newSession.setAttribute("user", user.getFirstName());
-            UserUtilSingleton.getInstance().getUserUtil().setCurrentUserId(user.getUserId());
-            return "redirect:/home";
         }
         return "redirect:/login";
     }

@@ -49,6 +49,10 @@ public class SubmissionDAO {
     // get submission id by user id and quiz type id
     public int getSubmissionIdByUserIdAndQuizTypeId(int userId, int quizTypeId) {
         String sql = "SELECT submission_id FROM submission WHERE user_id = ? AND quiz_type_id = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, userId, quizTypeId);
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class, userId, quizTypeId);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }

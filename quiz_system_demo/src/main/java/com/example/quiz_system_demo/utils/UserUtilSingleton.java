@@ -1,9 +1,5 @@
 package com.example.quiz_system_demo.utils;
 
-import com.example.quiz_system_demo.domain.CurrentQuiz;
-
-import java.util.List;
-
 public class UserUtilSingleton {
     private static UserUtilSingleton instance = null;
     private UserUtil userUtil;

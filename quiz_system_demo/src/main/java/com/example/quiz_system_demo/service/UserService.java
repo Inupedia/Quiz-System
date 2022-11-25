@@ -5,6 +5,8 @@ import com.example.quiz_system_demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private final UserDAO userDAO;
@@ -20,8 +22,8 @@ public class UserService {
     }
 
 
-    public User getUsernameByEmail(String email) {
-        return userDAO.getUsernameByEmail(email);
+    public Optional<User> getUserByEmail(String email) {
+        return userDAO.getUserByEmail(email);
     }
 
     public boolean validateLogin(String email, String password) {

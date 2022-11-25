@@ -1,7 +1,5 @@
 package com.example.quiz_system_demo.domain;
 
-import com.example.quiz_system_demo.domain.Option;
-import com.example.quiz_system_demo.domain.Question;
 import lombok.*;
 
 import java.util.List;
@@ -12,8 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-public class CurrentQuiz {
+public class QuizResult {
     private int index;
+    private String userAnswer;
     private Question question;
     private List<Option> options;
 }

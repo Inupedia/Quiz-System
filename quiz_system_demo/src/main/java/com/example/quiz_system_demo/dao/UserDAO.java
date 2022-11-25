@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class UserDAO {
     JdbcTemplate jdbcTemplate;
@@ -27,11 +29,13 @@ public class UserDAO {
     }
 
     // get user by email
-    public User getUsernameByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         String sql = "SELECT * FROM user WHERE email = ?";
-        User res = jdbcTemplate.queryForObject(sql, userRowMapper, email);
-        res.setPassword(null);
-        return res;
+        try {
+            return Optional.of(jdbcTemplate.queryForObject(sql, userRowMapper, email));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     public boolean validateLogin(String email, String password) {

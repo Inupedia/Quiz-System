@@ -4,7 +4,6 @@ import com.example.quiz_system_demo.domain.CurrentQuiz;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,4 +22,5 @@ public class UserUtil {
         }
         return false;
     }
+
 }

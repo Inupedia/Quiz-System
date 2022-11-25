@@ -41,18 +41,11 @@ public class QuizController {
                     .build();
             data.add(d);
         }
+
         UserUtilSingleton.getInstance().getUserUtil().setCurrentQuizList(data);
         UserUtilSingleton.getInstance().getUserUtil().setCurrentQuizTypeId(id);
         UserUtilSingleton.getInstance().getUserUtil().setStartTime(new Timestamp(new Date().getTime()));
-//        data.add(Data.builder()
-//                .question(new Question(1, "Multiple Choice", "What is the capital of India?", "New Delhi", 1))
-//                .options(new ArrayList<Option>() {{
-//                    add(new Option(1, "New Delhi", 1));
-//                    add(new Option(2, "Mumbai", 1));
-//                    add(new Option(3, "Kolkata", 1));
-//                    add(new Option(4, "Chennai", 1));
-//                }})
-//                .build());
+        System.out.println(UserUtilSingleton.getInstance().getUserUtil());
         model.addAttribute("data", data);
         return "quiz";
     }
