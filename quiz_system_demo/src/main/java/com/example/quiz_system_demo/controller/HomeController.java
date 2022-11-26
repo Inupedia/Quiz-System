@@ -28,18 +28,4 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/feedback", method = RequestMethod.GET)
-    public String getFeedback() {
-        return "feedback";
-    }
-
-    @RequestMapping(value = "/feedback", method = RequestMethod.POST)
-    @ResponseBody
-    public HashMap<String, String> getResult(HttpServletRequest request) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("rating", request.getParameter("rating"));
-        map.put("feedback", request.getParameter("feedback"));
-        return map;
-    }
-
 }

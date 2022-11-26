@@ -23,11 +23,15 @@ import java.util.List;
 @Controller
 public class SubmissionController {
 
-    @Autowired
     private SubmissionService submissionService;
 
-    @Autowired
     private ResultService resultService;
+
+    @Autowired
+    SubmissionController(SubmissionService submissionService, ResultService resultService) {
+        this.submissionService = submissionService;
+        this.resultService = resultService;
+    }
 
     private List<QuizResult> data;
 
@@ -93,6 +97,7 @@ public class SubmissionController {
                     quizResult.setQuestion(currentQuiz.getQuestion());
                 }
             }
+            quizResult.setIndex(data.indexOf(quizResult) + 1);
         }
 
         System.out.println("getSubmission");
@@ -102,6 +107,8 @@ public class SubmissionController {
         model.addAttribute("score", score);
 
         model.addAttribute("totalScore", totalScore);
+
+        model.addAttribute("quizTypeId", UserUtilSingleton.getInstance().getUserUtil().getCurrentQuizTypeId());
 
         return "submission";
     }

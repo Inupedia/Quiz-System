@@ -92,7 +92,7 @@
 <body>
 <jsp:include page="nav.jsp" flush="true" />
 <div class="container">
-    <form action="/feedback" method="POST">
+    <form action="/feedback?quizTypeId=${quizTypeId}" method="POST">
     <h3>Please give a rating:</h3>
     <div class="rating">
         <input type="radio" id="star5" name="rating" value="5" />
@@ -112,7 +112,7 @@
     <h3>Your Comments:</h3>
     <textarea id="feedback" name="feedback" placeholder="Write something.." style="height:200px"></textarea>
 
-    <input type="submit" value="Submit" class="mt-2">
+    <input type="submit" value="Submit" class="mt-2 d-flex justify-content-end btn-dark">
 
     </form>
 </div>

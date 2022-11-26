@@ -147,7 +147,7 @@ INSERT INTO `quiz`.`question` (`question_type`, `description`, `correct_answer`,
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('int[] a = new int[5];', 11);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('int[] a = new int(5);', 11);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('int[] a = new int[];', 11);
-INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('int[] a = new int([5])', 11);
+INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('int[] a = new int([5]);', 11);
 
 INSERT INTO `quiz`.`question` (`question_type`, `description`, `correct_answer`, `quiz_type_id`) VALUES ('True or False', 'A class can have multiple constructors.', 'True', 1);
 INSERT INTO `quiz`.`option` (`description`, `question_id`) VALUES ('True', 12);

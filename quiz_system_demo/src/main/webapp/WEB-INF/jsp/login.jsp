@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -9,6 +10,7 @@
 
 <body>
 <div id="root">
+    <c:import url="nav.jsp" />
     <div class="d-flex align-items-center justify-content-center container" style="min-height: 100vh;">
         <div class="w-100" style="max-width: 400px;">
             <div class="card"><div class="card-body">

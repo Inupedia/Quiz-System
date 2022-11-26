@@ -22,10 +22,13 @@ import java.util.List;
 @RequestMapping("/quiz")
 public class QuizController {
 
-    @Autowired
     private QuestionService questionService;
-    @Autowired
     private OptionService optionService;
+    @Autowired
+    QuizController(QuestionService questionService, OptionService optionService) {
+        this.questionService = questionService;
+        this.optionService = optionService;
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getQuiz(@RequestParam("quizTypeId") int id, Model model) {

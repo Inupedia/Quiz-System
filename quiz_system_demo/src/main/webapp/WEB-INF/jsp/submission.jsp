@@ -7,7 +7,7 @@
         <style><%@include file="style/submission.css"%></style>
     </head>
     <body>
-        <div class="result-board">
+        <div class="d-flex justify-content-center result-board m-4 ">
             <p></p>
         </div>
         <div class="quiz m-4">
@@ -43,8 +43,8 @@
                 </c:forEach>
                 <div style="overflow:auto;" class="mt-4">
                     <div style="float:right;">
-                        <button type="button" id="retakeBtn" onclick="retake()" class="btn btn-dark">Retake</button>
-                        <button type="button" id="feedbackBtn" onclick="submitFeedback()" class="btn btn-dark">FeedBack</button>
+                        <button type="button" id="retakeBtn" onclick="retake(${quizTypeId})" class="btn btn-dark">Retake</button>
+                        <button type="button" id="feedbackBtn" onclick="submitFeedback(${quizTypeId})" class="btn btn-dark">FeedBack</button>
                     </div>
                 </div>
             </Form>
@@ -59,6 +59,7 @@
         <script><%@include file="script/submission.js"%></script>
         <script>
             showTab(${score}, ${totalScore});
+            showResults(${score}, ${totalScore});
         </script>
     </body>
 </html>
