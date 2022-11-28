@@ -8,7 +8,7 @@
                         <h3 class="panel-title">${quizType.typeName}</h3>
                     </div>
                     <div class="panel-body">
-                        <a href="quiz?quizTypeId=${quizType.id}" class="btn btn-primary">Start</a>
+                        <a href="quiz?quizTypeId=${quizType.id}" class="btn btn-dark">Start</a>
                     </div>
                 </div>
             </div>

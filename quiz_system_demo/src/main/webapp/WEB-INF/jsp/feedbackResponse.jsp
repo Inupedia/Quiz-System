@@ -12,4 +12,9 @@
     <c:import url="nav.jsp" />
     <p class="d-flex justify-content-center">Thank you for your feedback!</p>
 </div>
+<script>
+    setTimeout(function () {
+        window.location.href = "/home";
+    }, 3000);
+</script>
 </body>
