@@ -32,7 +32,7 @@ public class QuizController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getQuiz(@RequestParam("quizTypeId") int id, Model model) {
-        int numOfQuestions = 2;
+        int numOfQuestions = 10;
         List<CurrentQuiz> data = new ArrayList<>();
         List<Question> randomQuestions = questionService.getRandomQuestions(id, numOfQuestions);
         for (Question question : randomQuestions) {
