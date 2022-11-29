@@ -22,9 +22,9 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String getDashboard() {
-        return "dashboard";
-    }
+//    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+//    public String getDashboard() {
+//        return "dashboard";
+//    }
 
 }

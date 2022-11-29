@@ -1,5 +1,6 @@
 package com.example.quiz_system_demo.user_jdbc.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ public class FeedbackDAO {
     JdbcTemplate jdbcTemplate;
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Autowired
     public FeedbackDAO(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;

@@ -97,10 +97,10 @@
                 <c:import url="./dashboard/dashboard_quiz.jsp" />
             </div>
             <div class="content database">
-                <h1>Database</h1>
+                <c:import url="./dashboard/dashboard_database.jsp" />
             </div>
             <div class="content user">
-                <h1>User</h1>
+                <c:import url="./dashboard/dashboard_user.jsp" />
             </div>
         </div>
     </div>

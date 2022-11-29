@@ -19,7 +19,7 @@
 <body>
 <div class="row m-2">
     <div class="col d-flex justify-content-start">
-        <h2>Quiz Information</h2>
+        <h2>Reviews</h2>
     </div>
 </div>
 <table
@@ -29,26 +29,18 @@
     <thead>
     <tr class="table-dark text-center">
         <th scope="col">#</th>
-        <th scope="col">Date</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Score</th>
         <th scope="col">Quiz Type</th>
-        <th scope="col">Detail</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Comment</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="quizTable" items="${quizTable}">
+    <c:forEach var="reviewTable" items="${reviewTable}">
         <tr class="text-center">
-            <th scope="row"><c:out value="${quizTable.id}"/></th>
-            <td><c:out value="${quizTable.date}"/></td>
-            <td><c:out value="${quizTable.firstName}"/></td>
-            <td><c:out value="${quizTable.lastName}"/></td>
-            <td><c:out value="${quizTable.score}"/></td>
-            <td><c:out value="${quizTable.type}"/></td>
-            <td>
-                <a class="editStatus me-2" title="Edit" data-toggle="tooltip" href="/dashboard/getSubmission?id=${quizTable.id}"><i class="bi bi-folder2-open text-dark"></i></a>
-            </td>
+            <th scope="row"><c:out value="${reviewTable.id}"/></th>
+            <td><c:out value="${reviewTable.type}"/></td>
+            <td><c:out value="${reviewTable.rate}"/></td>
+            <td><c:out value="${reviewTable.comment}"/></td>
         </tr>
     </c:forEach>
     </tbody>
