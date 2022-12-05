@@ -16,7 +16,6 @@ public class HibernateUser implements Serializable {
     @Column(name = "user_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer userId;
 
     @Column(name = "first_name")

@@ -76,7 +76,7 @@ const saveUser = async() => {
     //send data to server to update database, localhost:8080/dashboard/users/{id}
     try {
         const response = await fetch(
-            "http://localhost:8080/dashboard/users/" + uid,
+            "http://localhost:8080/dashboard/users?uid=" + uid,
             {
                 method: "PUT",
                 headers: {

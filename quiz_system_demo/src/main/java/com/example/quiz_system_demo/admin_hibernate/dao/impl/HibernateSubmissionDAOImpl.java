@@ -20,5 +20,11 @@ public class HibernateSubmissionDAOImpl extends AbstractHibernateDAO<HibernateSu
         return getCurrentSession().createQuery("from HibernateSubmission order by date desc").list();
     }
 
+    @Override
+    public List<HibernateSubmission> findSubmissionByUserId(Integer id) {
+        return getCurrentSession().createQuery("from HibernateSubmission where userId = :id")
+                .setParameter("id", id).list();
+    }
+
 
 }

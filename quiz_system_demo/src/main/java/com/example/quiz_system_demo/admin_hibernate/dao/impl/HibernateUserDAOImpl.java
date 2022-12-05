@@ -32,5 +32,11 @@ public class HibernateUserDAOImpl extends AbstractHibernateDAO<HibernateUser> im
     public void updateUser(HibernateUser hibernateUser) {
         update(hibernateUser);
     }
+
+    @Override
+    public void deleteUser(Integer id) {
+        HibernateUser hibernateUser = findById(id);
+        delete(hibernateUser);
+    }
 }
 

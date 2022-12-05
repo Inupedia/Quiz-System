@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface HibernateQuizTypeDAO {
     List<HibernateQuizType> findAll();
+
+    String getQuizTypeById(Integer quizTypeId);
 }

@@ -39,4 +39,9 @@ public class HibernateUserService {
     public void updateUser(HibernateUser hibernateUser) {
         hibernateUserDAO.updateUser(hibernateUser);
     }
+
+    @Transactional
+    public void deleteUser(Integer id) {
+        hibernateUserDAO.deleteUser(id);
+    }
 }

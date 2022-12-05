@@ -12,4 +12,6 @@ public interface HibernateUserDAO {
     void addUser(HibernateUser hibernateUser);
 
     void updateUser(HibernateUser hibernateUser);
+
+    void deleteUser(Integer id);
 }

@@ -125,7 +125,7 @@ public class HibernateDashboardController {
 
     // update user by id
     @RequestMapping(value = "/users", method = RequestMethod.PUT)
-    public String updateUser(@RequestParam("id") Integer id, @RequestBody MultiValueMap<String, String> formData) {
+    public String updateUser(@RequestParam("uid") Integer id, @RequestBody MultiValueMap<String, String> formData) {
 //        HibernateUser hibernateUser = new HibernateUser();
 //        hibernateUser.setUserId(id);
 //        hibernateUser.setFirstName(formData.getFirst("firstName"));
@@ -140,5 +140,11 @@ public class HibernateDashboardController {
         return "redirect:/dashboard#user";
     }
 
+    // delete user by id
+    @RequestMapping(value = "/users", method = RequestMethod.DELETE)
+    public String deleteUser(@RequestParam("id") Integer id) {
+        hibernateUserService.deleteUser(id);
+        return "redirect:/dashboard#user";
+    }
 
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface HibernateSubmissionDAO {
 
     List<HibernateSubmission> findAll();
+
+    List<HibernateSubmission> findSubmissionByUserId(Integer id);
 }

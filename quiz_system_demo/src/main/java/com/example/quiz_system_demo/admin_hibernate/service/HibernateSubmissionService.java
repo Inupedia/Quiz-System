@@ -24,4 +24,9 @@ public class HibernateSubmissionService {
     public List<HibernateSubmission> findAll() {
         return submissionDAO.findAll();
     }
+
+    @Transactional
+    public List<HibernateSubmission> findSubmissionByUserId(Integer id) {
+        return submissionDAO.findSubmissionByUserId(id);
+    }
 }

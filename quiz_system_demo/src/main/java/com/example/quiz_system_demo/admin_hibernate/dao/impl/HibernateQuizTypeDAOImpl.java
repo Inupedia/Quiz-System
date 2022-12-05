@@ -17,4 +17,10 @@ public class HibernateQuizTypeDAOImpl extends AbstractHibernateDAO<HibernateQuiz
     public List<HibernateQuizType> findAll() {
         return getCurrentSession().createQuery("from HibernateQuizType").list();
     }
+
+    @Override
+    public String getQuizTypeById(Integer quizTypeId) {
+        return getCurrentSession().createQuery("select description from HibernateQuizType where id = :id")
+                .setParameter("id", quizTypeId).uniqueResult().toString();
+    }
 }

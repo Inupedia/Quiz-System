@@ -32,7 +32,7 @@ public class LoginController {
     public String postLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
         Optional<User> user = userService.getUserByEmail(email);
         if (user.isPresent()) {
-            if (userService.validateLogin(email, password)){
+            if (userService.validateLogin(email, password) && user.get().getIsActive() == 1){
                 System.out.println("Login successful");
                 HttpSession oldSession = request.getSession(false);
                 if (oldSession != null) {

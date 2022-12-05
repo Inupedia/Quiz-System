@@ -24,4 +24,9 @@ public class HibernateQuizTypeService {
     public List<HibernateQuizType> findAll() {
         return quizTypeDAO.findAll();
     }
+
+    @Transactional
+    public String getQuizTypeById(Integer quizTypeId) {
+        return quizTypeDAO.getQuizTypeById(quizTypeId);
+    }
 }
