@@ -10,4 +10,9 @@ import lombok.*;
 public class UserResponse {
     private ResponseStatus status;
     private HibernateUser user;
+
+    @Override
+    public String toString() {
+        return "[user: " + user + "]";
+    }
 }

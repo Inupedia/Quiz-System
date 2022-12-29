@@ -5,6 +5,7 @@ import com.example.quiz_system_demo.admin_hibernate.domain.HibernateQuestion;
 import com.example.quiz_system_demo.admin_hibernate.domain.HibernateQuizType;
 import com.example.quiz_system_demo.admin_hibernate.domain.HibernateUser;
 import com.example.quiz_system_demo.admin_hibernate.domain.dto.QuizResult;
+import com.example.quiz_system_demo.admin_hibernate.exception.UserNotFoundException;
 import com.example.quiz_system_demo.admin_hibernate.restDomain.*;
 import com.example.quiz_system_demo.admin_hibernate.restDomain.ResponseStatus;
 import com.example.quiz_system_demo.admin_hibernate.service.*;
@@ -80,8 +81,11 @@ public class RestUserController {
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.GET, params = "userId")
-    public UserResponse getUserById(@RequestParam("userId") Integer id) {
+    public UserResponse getUserById(@RequestParam("userId") Integer id) throws UserNotFoundException {
         HibernateUser user = hibernateUserService.getUserById(id);
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
         return UserResponse.builder()
                 .status(ResponseStatus.builder()
                         .success(true)
